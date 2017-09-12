@@ -42,6 +42,17 @@ impl RngVec for u64 {
      }
 }
 
+impl RngVec for u128 {
+     fn rand_vec() -> Vec<u128> {
+        use self::rand::Rng;
+        let mut rand = self::rand::thread_rng();
+        (0..BENCH_SIZE).map(|_| {
+            (rand.gen::<u64>() as u128) << 64 &
+            (rand.gen::<u64>() as u128)
+        }).collect::<Vec<u128>>()
+     }
+}
+
 fn bench_helper<N: NumDigits + RngVec, F: Fn(N) -> usize>(f: F, b: &[N]){
     for i in black_box(b).iter() {
         black_box(f(*i));
@@ -347,5 +358,65 @@ mod u64 {
     #[bench]
     fn bench_zero_impl(b: &mut Bencher) {
         super::bench_zero_impl::<u64>(b);
+    }
+}
+
+mod u128 {
+    use super::test::Bencher;
+
+    #[bench]
+    fn bench_log(b: &mut Bencher) {
+        super::bench_log::<u128>(b);
+    }
+
+    #[bench]
+    fn bench_str_format(b: &mut Bencher) {
+        super::bench_str_format::<u128>(b);
+    }
+
+    #[bench]
+    fn bench_str_format_stack(b: &mut Bencher) {
+        super::bench_str_format_stack::<u128>(b);
+    }
+
+    #[bench]
+    #[ignore]
+    fn bench_str_itoa_stack(b: &mut Bencher) {
+        super::bench_str_itoa_stack::<u128>(b);
+    }
+
+    #[bench]
+    fn bench_div_loop(b: &mut Bencher) {
+        super::bench_div_loop::<u128>(b);
+    }
+
+    #[bench]
+    fn bench_div_unrolled(b: &mut Bencher) {
+        super::bench_div_unrolled::<u128>(b);
+    }
+
+    #[bench]
+    fn bench_mul_loop(b: &mut Bencher) {
+        super::bench_mul_loop::<u128>(b);
+    }
+
+    #[bench]
+    fn bench_pattern_match(b: &mut Bencher) {
+        super::bench_pattern_match::<u128>(b);
+    }
+
+    #[bench]
+    fn bench_binary_search(b: &mut Bencher) {
+        super::bench_binary_search::<u128>(b);
+    }
+
+    #[bench]
+    fn bench_most_significant_bit(b: &mut Bencher) {
+        super::bench_most_significant_bit::<u128>(b);
+    }
+
+    #[bench]
+    fn bench_zero_impl(b: &mut Bencher) {
+        super::bench_zero_impl::<u128>(b);
     }
 }
