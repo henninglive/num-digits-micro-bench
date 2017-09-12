@@ -55,6 +55,12 @@ fn bench_div_loop<N: NumDigits + RngVec>(b: &mut Bencher) {
 }
 
 #[inline]
+fn bench_div_unrolled<N: NumDigits + RngVec>(b: &mut Bencher) {
+    let v = RngVec::rand_vec();
+    b.iter(|| bench_helper(|n: N| n.div_unrolled(), &v[..]));
+}
+
+#[inline]
 fn bench_mul_loop<N: NumDigits + RngVec>(b: &mut Bencher) {
     let v = RngVec::rand_vec();
     b.iter(|| bench_helper(|n: N| n.mul_loop(), &v[..]));
@@ -72,6 +78,11 @@ mod u8 {
     #[bench]
     fn bench_div_loop(b: &mut Bencher) {
         super::bench_div_loop::<u8>(b);
+    }
+
+    #[bench]
+    fn bench_div_unrolled(b: &mut Bencher) {
+        super::bench_div_unrolled::<u8>(b);
     }
 
     #[bench]
@@ -94,6 +105,11 @@ mod u16 {
     }
 
     #[bench]
+    fn bench_div_unrolled(b: &mut Bencher) {
+        super::bench_div_unrolled::<u16>(b);
+    }
+
+    #[bench]
     fn bench_mul_loop(b: &mut Bencher) {
         super::bench_mul_loop::<u16>(b);
     }
@@ -113,6 +129,11 @@ mod u32 {
     }
 
     #[bench]
+    fn bench_div_unrolled(b: &mut Bencher) {
+        super::bench_div_unrolled::<u32>(b);
+    }
+
+    #[bench]
     fn bench_mul_loop(b: &mut Bencher) {
         super::bench_mul_loop::<u32>(b);
     }
@@ -129,6 +150,11 @@ mod u64 {
     #[bench]
     fn bench_div_loop(b: &mut Bencher) {
         super::bench_div_loop::<u64>(b);
+    }
+
+    #[bench]
+    fn bench_div_unrolled(b: &mut Bencher) {
+        super::bench_div_unrolled::<u64>(b);
     }
 
     #[bench]

@@ -1,5 +1,6 @@
 pub trait NumDigits {
     fn div_loop(&self) -> usize;
+    fn div_unrolled(&self) -> usize;
     fn mul_loop(&self) -> usize;
 }
 
@@ -13,6 +14,18 @@ impl NumDigits for u8 {
             len += 1;
         }
         len
+    }
+
+    #[inline]
+    fn div_unrolled(&self) -> usize {
+        let num = *self;
+        if num < 10 {
+            return 1;
+        }
+        if num < 100 {
+            return 2;
+        }
+        3
     }
 
     #[inline]
@@ -43,6 +56,24 @@ impl NumDigits for u16 {
     }
 
     #[inline]
+    fn div_unrolled(&self) -> usize {
+        let num = *self;
+        if num < 10 {
+            return 1;
+        }
+        if num < 100 {
+            return 2;
+        }
+        if num < 1000 {
+            return 3;
+        }
+        if num < 10000 {
+            return 4;
+        }
+        5
+    }
+
+    #[inline]
     fn mul_loop(&self) -> usize {
         let mut len = 1;
         let mut n = 1u16;
@@ -70,6 +101,28 @@ impl NumDigits for u32 {
     }
 
     #[inline]
+    fn div_unrolled(&self) -> usize {
+        let mut len = 1;
+        let mut num = *self;
+        loop {
+            if num < 10 {
+                return len;
+            }
+            if num < 100 {
+                return len + 1;
+            }
+            if num < 1000 {
+                return len + 2;
+            }
+            if num < 10000 {
+                return len + 3;
+            }
+            num /= 10000;
+            len += 4;
+        }
+    }
+
+    #[inline]
     fn mul_loop(&self) -> usize {
         let mut len = 1;
         let mut n = 1u32;
@@ -94,6 +147,28 @@ impl NumDigits for u64 {
             len += 1;
         }
         len
+    }
+
+    #[inline]
+    fn div_unrolled(&self) -> usize {
+        let mut len = 1;
+        let mut num = *self;
+        loop {
+            if num < 10 {
+                return len;
+            }
+            if num < 100 {
+                return len + 1;
+            }
+            if num < 1000 {
+                return len + 2;
+            }
+            if num < 10000 {
+                return len + 3;
+            }
+            num /= 10000;
+            len += 4;
+        }
     }
 
     #[inline]
