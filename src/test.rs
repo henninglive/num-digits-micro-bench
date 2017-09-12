@@ -31,6 +31,11 @@ mod u8 {
     }
 
     #[test]
+    fn test_str_itoa_stack() {
+        test_helper(|n: u8| n.str_itoa_stack());
+    }
+
+    #[test]
     fn test_div_loop() {
         test_helper(|n: u8| n.div_loop());
     }
@@ -94,6 +99,11 @@ mod u16 {
     }
 
     #[test]
+    fn test_str_itoa_stack() {
+        test_helper(|n: u16| n.str_itoa_stack());
+    }
+
+    #[test]
     fn test_div_loop() {
         test_helper(|n: u16| n.div_loop());
     }
@@ -154,6 +164,11 @@ mod u32 {
     #[test]
     fn test_str_format_stack() {
         test_helper(|n: u32| n.str_format_stack());
+    }
+
+    #[test]
+    fn test_str_itoa_stack() {
+        test_helper(|n: u32| n.str_itoa_stack());
     }
 
     #[test]
@@ -243,6 +258,11 @@ mod u64 {
     #[test]
     fn test_str_format_stack() {
         test_helper(|n: u64| n.str_format_stack());
+    }
+
+    #[test]
+    fn test_str_itoa_stack() {
+        test_helper(|n: u64| n.str_itoa_stack());
     }
 
     #[test]

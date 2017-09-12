@@ -1,7 +1,10 @@
+extern crate itoa;
+
 pub trait NumDigits {
     fn log(&self) -> usize;
     fn str_format(&self) -> usize;
     fn str_format_stack(&self) -> usize;
+    fn str_itoa_stack(&self) -> usize;
     fn div_loop(&self) -> usize;
     fn div_unrolled(&self) -> usize;
     fn mul_loop(&self) -> usize;
@@ -27,6 +30,15 @@ impl NumDigits for u8 {
         let mut b = [0u8; 3];
         let mut c = Cursor::new(&mut b[..]);
         write!(c, "{}", *self).unwrap();
+        c.position() as usize
+    }
+
+    #[inline]
+    fn str_itoa_stack(&self) -> usize {
+        use std::io::Cursor;
+        let mut b = [0u8; 3];
+        let mut c = Cursor::new(&mut b[..]);
+        itoa::write(&mut c, *self).unwrap();
         c.position() as usize
     }
 
@@ -129,6 +141,15 @@ impl NumDigits for u16 {
         let mut b = [0u8; 5];
         let mut c = Cursor::new(&mut b[..]);
         write!(c, "{}", *self).unwrap();
+        c.position() as usize
+    }
+
+    #[inline]
+    fn str_itoa_stack(&self) -> usize {
+        use std::io::Cursor;
+        let mut b = [0u8; 5];
+        let mut c = Cursor::new(&mut b[..]);
+        itoa::write(&mut c, *self).unwrap();
         c.position() as usize
     }
 
@@ -247,6 +268,15 @@ impl NumDigits for u32 {
         let mut b = [0u8; 10];
         let mut c = Cursor::new(&mut b[..]);
         write!(c, "{}", *self).unwrap();
+        c.position() as usize
+    }
+
+    #[inline]
+    fn str_itoa_stack(&self) -> usize {
+        use std::io::Cursor;
+        let mut b = [0u8; 10];
+        let mut c = Cursor::new(&mut b[..]);
+        itoa::write(&mut c, *self).unwrap();
         c.position() as usize
     }
 
@@ -395,6 +425,15 @@ impl NumDigits for u64 {
         let mut b = [0u8; 20];
         let mut c = Cursor::new(&mut b[..]);
         write!(c, "{}", *self).unwrap();
+        c.position() as usize
+    }
+
+    #[inline]
+    fn str_itoa_stack(&self) -> usize {
+        use std::io::Cursor;
+        let mut b = [0u8; 20];
+        let mut c = Cursor::new(&mut b[..]);
+        itoa::write(&mut c, *self).unwrap();
         c.position() as usize
     }
 
