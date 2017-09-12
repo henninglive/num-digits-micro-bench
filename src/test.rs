@@ -44,6 +44,11 @@ mod u8 {
     fn test_pattern_match() {
         test_helper(|n: u8| n.pattern_match());
     }
+
+    #[test]
+    fn test_binary_search() {
+        test_helper(|n: u8| n.binary_search());
+    }
 }
 
 mod u16 {
@@ -91,6 +96,11 @@ mod u16 {
     #[test]
     fn test_pattern_match() {
         test_helper(|n: u16| n.pattern_match());
+    }
+
+    #[test]
+    fn test_binary_search() {
+        test_helper(|n: u16| n.binary_search());
     }
 }
 
@@ -140,6 +150,11 @@ mod u32 {
     fn test_pattern_match() {
         test_helper(|n: u32| n.pattern_match());
     }
+
+    #[test]
+    fn test_binary_search() {
+        test_helper(|n: u32| n.binary_search());
+    }
 }
 
 mod u64 {
@@ -187,5 +202,10 @@ mod u64 {
     #[test]
     fn test_pattern_match() {
         test_helper(|n: u64| n.pattern_match());
+    }
+
+    #[test]
+    fn test_binary_search() {
+        test_helper(|n: u64| n.binary_search());
     }
 }

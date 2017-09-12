@@ -5,6 +5,7 @@ pub trait NumDigits {
     fn div_unrolled(&self) -> usize;
     fn mul_loop(&self) -> usize;
     fn pattern_match(&self) -> usize;
+    fn binary_search(&self) -> usize;
 }
 
 impl NumDigits for u8 {
@@ -66,6 +67,21 @@ impl NumDigits for u8 {
             DEC_0 .. DEC_1 => 1,
             DEC_1 .. DEC_2 => 2,
             _ => 3,
+        }
+    }
+
+    #[inline]
+    fn binary_search(&self) -> usize {
+        use ::decimal::dec_8::*;
+        let num = *self;
+        if num < DEC_2 {
+            if num < DEC_1 {
+                1
+            } else {
+                2
+            }
+        } else {
+            3
         }
     }
 }
@@ -137,6 +153,29 @@ impl NumDigits for u16 {
             DEC_2 .. DEC_3 => 3,
             DEC_3 .. DEC_4 => 4,
             _ => 5,
+        }
+    }
+
+    #[inline]
+    fn binary_search(&self) -> usize {
+        use ::decimal::dec_16::*;
+        let num = *self;
+        if num < DEC_4 {
+            if num < DEC_2 {
+                if num < DEC_1 {
+                    1
+                } else {
+                    2
+                }
+            } else {
+                if num < DEC_3 {
+                    3
+                } else {
+                    4
+                }
+            }
+        } else {
+            5
         }
     }
 }
@@ -217,6 +256,50 @@ impl NumDigits for u32 {
             DEC_7  .. DEC_8  => 8,
             DEC_8  .. DEC_9  => 9,
             _ => 10,
+        }
+    }
+
+    #[inline]
+    fn binary_search(&self) -> usize {
+        use ::decimal::dec_32::*;
+        let num = *self;
+        if num < DEC_8 {
+            if num < DEC_4 {
+                if num < DEC_2 {
+                    if num < DEC_1 {
+                        1
+                    } else {
+                        2
+                    }
+                } else {
+                    if num < DEC_3 {
+                        3
+                    } else {
+                        4
+                    }
+                }
+            } else {
+                if num < DEC_6 {
+                    if num < DEC_5 {
+                        5
+                    }
+                    else {
+                        6
+                    }
+                } else {
+                    if num < DEC_7 {
+                        7
+                    } else {
+                        8
+                    }
+                }
+            }
+        } else {
+            if num < DEC_9 {
+                9
+            } else {
+                10
+            }
         }
     }
 }
@@ -307,6 +390,91 @@ impl NumDigits for u64 {
             DEC_17 .. DEC_18 => 18,
             DEC_18 .. DEC_19 => 19,
             _ => 20,
+        }
+    }
+
+    #[inline]
+    fn binary_search(&self) -> usize {
+        use ::decimal::dec_64::*;
+        let num = *self;
+        if num < DEC_16 {
+            if num < DEC_8 {
+                if num < DEC_4 {
+                    if num < DEC_2 {
+                        if num < DEC_1 {
+                            1
+                        } else {
+                            2
+                        }
+                    } else {
+                        if num < DEC_3 {
+                            3
+                        } else {
+                            4
+                        }
+                    }
+                } else {
+                    if num < DEC_6 {
+                        if num < DEC_5 {
+                            5
+                        }
+                        else {
+                            6
+                        }
+                    } else {
+                        if num < DEC_7 {
+                            7
+                        } else {
+                            8
+                        }
+                    }
+                }
+            } else {
+               if num < DEC_12 {
+                    if num < DEC_10 {
+                        if num < DEC_9 {
+                            9
+                        } else {
+                            10
+                        }
+                    } else {
+                        if num < DEC_11 {
+                            11
+                        } else {
+                            12
+                        }
+                    }
+                } else {
+                    if num < DEC_14 {
+                        if num < DEC_13 {
+                            13
+                        }
+                        else {
+                            14
+                        }
+                    } else {
+                        if num < DEC_15 {
+                            15
+                        } else {
+                            16
+                        }
+                    }
+                }
+            }
+        } else {
+            if num < DEC_18 {
+                if num < DEC_17 {
+                    17
+                } else {
+                    18
+                }
+            } else {
+                if num < DEC_19 {
+                    19
+                } else {
+                    20
+                }
+            }
         }
     }
 }
