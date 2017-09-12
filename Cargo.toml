@@ -1,0 +1,6 @@
+[package]
+name = "num-digits-micro-bench"
+version = "0.1.0"
+authors = ["Henning Ottesen <henning@live.no>"]
+
+[dependencies]
