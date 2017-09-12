@@ -49,6 +49,18 @@ fn bench_helper<N: NumDigits + RngVec, F: Fn(N) -> usize>(f: F, b: &[N]){
 }
 
 #[inline]
+fn bench_str_format<N: NumDigits + RngVec>(b: &mut Bencher) {
+    let v = RngVec::rand_vec();
+    b.iter(|| bench_helper(|n: N| n.str_format(), &v[..]));
+}
+
+#[inline]
+fn bench_str_format_stack<N: NumDigits + RngVec>(b: &mut Bencher) {
+    let v = RngVec::rand_vec();
+    b.iter(|| bench_helper(|n: N| n.str_format_stack(), &v[..]));
+}
+
+#[inline]
 fn bench_div_loop<N: NumDigits + RngVec>(b: &mut Bencher) {
     let v = RngVec::rand_vec();
     b.iter(|| bench_helper(|n: N| n.div_loop(), &v[..]));
@@ -76,6 +88,16 @@ mod u8 {
     use super::test::Bencher;
 
     #[bench]
+    fn bench_str_format(b: &mut Bencher) {
+        super::bench_str_format::<u8>(b);
+    }
+
+    #[bench]
+    fn bench_str_format_stack(b: &mut Bencher) {
+        super::bench_str_format_stack::<u8>(b);
+    }
+
+    #[bench]
     fn bench_div_loop(b: &mut Bencher) {
         super::bench_div_loop::<u8>(b);
     }
@@ -98,6 +120,16 @@ mod u8 {
 
 mod u16 {
     use super::test::Bencher;
+
+    #[bench]
+    fn bench_str_format(b: &mut Bencher) {
+        super::bench_str_format::<u16>(b);
+    }
+
+    #[bench]
+    fn bench_str_format_stack(b: &mut Bencher) {
+        super::bench_str_format_stack::<u16>(b);
+    }
 
     #[bench]
     fn bench_div_loop(b: &mut Bencher) {
@@ -124,6 +156,16 @@ mod u32 {
     use super::test::Bencher;
 
     #[bench]
+    fn bench_str_format(b: &mut Bencher) {
+        super::bench_str_format::<u32>(b);
+    }
+
+    #[bench]
+    fn bench_str_format_stack(b: &mut Bencher) {
+        super::bench_str_format_stack::<u32>(b);
+    }
+
+    #[bench]
     fn bench_div_loop(b: &mut Bencher) {
         super::bench_div_loop::<u32>(b);
     }
@@ -146,6 +188,16 @@ mod u32 {
 
 mod u64 {
     use super::test::Bencher;
+
+    #[bench]
+    fn bench_str_format(b: &mut Bencher) {
+        super::bench_str_format::<u64>(b);
+    }
+
+    #[bench]
+    fn bench_str_format_stack(b: &mut Bencher) {
+        super::bench_str_format_stack::<u64>(b);
+    }
 
     #[bench]
     fn bench_div_loop(b: &mut Bencher) {

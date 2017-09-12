@@ -16,6 +16,16 @@ mod u8 {
     }
 
     #[test]
+    fn test_str_format() {
+        test_helper(|n: u8| n.str_format());
+    }
+
+    #[test]
+    fn test_str_format_stack() {
+        test_helper(|n: u8| n.str_format_stack());
+    }
+
+    #[test]
     fn test_div_loop() {
         test_helper(|n: u8| n.div_loop());
     }
@@ -46,6 +56,16 @@ mod u16 {
             assert_eq!(f(n - 1), i);
             assert_eq!(f(n / 2), i);
         }
+    }
+
+    #[test]
+    fn test_str_format() {
+        test_helper(|n: u16| n.str_format());
+    }
+
+    #[test]
+    fn test_str_format_stack() {
+        test_helper(|n: u16| n.str_format_stack());
     }
 
     #[test]
@@ -82,6 +102,16 @@ mod u32 {
     }
 
     #[test]
+    fn test_str_format() {
+        test_helper(|n: u32| n.str_format());
+    }
+
+    #[test]
+    fn test_str_format_stack() {
+        test_helper(|n: u32| n.str_format_stack());
+    }
+
+    #[test]
     fn test_div_loop() {
         test_helper(|n: u32| n.div_loop());
     }
@@ -112,6 +142,16 @@ mod u64 {
             assert_eq!(f(n - 1), i);
             assert_eq!(f(n / 2), i);
         }
+    }
+
+    #[test]
+    fn test_str_format() {
+        test_helper(|n: u64| n.str_format());
+    }
+
+    #[test]
+    fn test_str_format_stack() {
+        test_helper(|n: u64| n.str_format_stack());
     }
 
     #[test]

@@ -1,10 +1,26 @@
 pub trait NumDigits {
+    fn str_format(&self) -> usize;
+    fn str_format_stack(&self) -> usize;
     fn div_loop(&self) -> usize;
     fn div_unrolled(&self) -> usize;
     fn mul_loop(&self) -> usize;
 }
 
 impl NumDigits for u8 {
+    #[inline]
+    fn str_format(&self) -> usize {
+        format!("{}", *self).len()
+    }
+
+    #[inline]
+    fn str_format_stack(&self) -> usize {
+        use std::io::{Write, Cursor};
+        let mut b = [0u8; 3];
+        let mut c = Cursor::new(&mut b[..]);
+        write!(c, "{}", *self).unwrap();
+        c.position() as usize
+    }
+
     #[inline]
     fn div_loop(&self) -> usize {
         let mut len = 1;
@@ -44,6 +60,20 @@ impl NumDigits for u8 {
 }
 
 impl NumDigits for u16 {
+    #[inline]
+    fn str_format(&self) -> usize {
+        format!("{}", *self).len()
+    }
+
+    #[inline]
+    fn str_format_stack(&self) -> usize {
+        use std::io::{Write, Cursor};
+        let mut b = [0u8; 5];
+        let mut c = Cursor::new(&mut b[..]);
+        write!(c, "{}", *self).unwrap();
+        c.position() as usize
+    }
+
     #[inline]
     fn div_loop(&self) -> usize {
         let mut len = 1;
@@ -89,6 +119,20 @@ impl NumDigits for u16 {
 }
 
 impl NumDigits for u32 {
+    #[inline]
+    fn str_format(&self) -> usize {
+        format!("{}", *self).len()
+    }
+
+    #[inline]
+    fn str_format_stack(&self) -> usize {
+        use std::io::{Write, Cursor};
+        let mut b = [0u8; 10];
+        let mut c = Cursor::new(&mut b[..]);
+        write!(c, "{}", *self).unwrap();
+        c.position() as usize
+    }
+
     #[inline]
     fn div_loop(&self) -> usize {
         let mut len = 1;
@@ -138,6 +182,20 @@ impl NumDigits for u32 {
 }
 
 impl NumDigits for u64 {
+    #[inline]
+    fn str_format(&self) -> usize {
+        format!("{}", *self).len()
+    }
+
+    #[inline]
+    fn str_format_stack(&self) -> usize {
+        use std::io::{Write, Cursor};
+        let mut b = [0u8; 20];
+        let mut c = Cursor::new(&mut b[..]);
+        write!(c, "{}", *self).unwrap();
+        c.position() as usize
+    }
+
     #[inline]
     fn div_loop(&self) -> usize {
         let mut len = 1;
