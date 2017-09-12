@@ -79,6 +79,12 @@ fn bench_mul_loop<N: NumDigits + RngVec>(b: &mut Bencher) {
 }
 
 #[inline]
+fn bench_pattern_match<N: NumDigits + RngVec>(b: &mut Bencher) {
+    let v = RngVec::rand_vec();
+    b.iter(|| bench_helper(|n: N| n.mul_loop(), &v[..]));
+}
+
+#[inline]
 fn bench_zero_impl<N: NumDigits + RngVec>(b: &mut Bencher) {
     let v = RngVec::rand_vec();
     b.iter(|| bench_helper(|n: N| {black_box(n); 0}, &v[..]));
@@ -110,6 +116,11 @@ mod u8 {
     #[bench]
     fn bench_mul_loop(b: &mut Bencher) {
         super::bench_mul_loop::<u8>(b);
+    }
+
+    #[bench]
+    fn bench_pattern_match(b: &mut Bencher) {
+        super::bench_pattern_match::<u8>(b);
     }
 
     #[bench]
@@ -147,6 +158,11 @@ mod u16 {
     }
 
     #[bench]
+    fn bench_pattern_match(b: &mut Bencher) {
+        super::bench_pattern_match::<u16>(b);
+    }
+
+    #[bench]
     fn bench_zero_impl(b: &mut Bencher) {
         super::bench_zero_impl::<u16>(b);
     }
@@ -181,6 +197,11 @@ mod u32 {
     }
 
     #[bench]
+    fn bench_pattern_match(b: &mut Bencher) {
+        super::bench_pattern_match::<u32>(b);
+    }
+
+    #[bench]
     fn bench_zero_impl(b: &mut Bencher) {
         super::bench_zero_impl::<u32>(b);
     }
@@ -212,6 +233,11 @@ mod u64 {
     #[bench]
     fn bench_mul_loop(b: &mut Bencher) {
         super::bench_mul_loop::<u64>(b);
+    }
+
+    #[bench]
+    fn bench_pattern_match(b: &mut Bencher) {
+        super::bench_pattern_match::<u64>(b);
     }
 
     #[bench]

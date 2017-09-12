@@ -39,6 +39,11 @@ mod u8 {
     fn test_mul() {
         test_helper(|n: u8| n.mul_loop());
     }
+
+    #[test]
+    fn test_pattern_match() {
+        test_helper(|n: u8| n.pattern_match());
+    }
 }
 
 mod u16 {
@@ -81,6 +86,11 @@ mod u16 {
     #[test]
     fn test_mul() {
         test_helper(|n: u16| n.mul_loop());
+    }
+
+    #[test]
+    fn test_pattern_match() {
+        test_helper(|n: u16| n.pattern_match());
     }
 }
 
@@ -125,6 +135,11 @@ mod u32 {
     fn test_mul() {
         test_helper(|n: u32| n.mul_loop());
     }
+
+    #[test]
+    fn test_pattern_match() {
+        test_helper(|n: u32| n.pattern_match());
+    }
 }
 
 mod u64 {
@@ -167,5 +182,10 @@ mod u64 {
     #[test]
     fn test_mul() {
         test_helper(|n: u64| n.mul_loop());
+    }
+
+    #[test]
+    fn test_pattern_match() {
+        test_helper(|n: u64| n.pattern_match());
     }
 }

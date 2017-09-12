@@ -4,6 +4,7 @@ pub trait NumDigits {
     fn div_loop(&self) -> usize;
     fn div_unrolled(&self) -> usize;
     fn mul_loop(&self) -> usize;
+    fn pattern_match(&self) -> usize;
 }
 
 impl NumDigits for u8 {
@@ -56,6 +57,16 @@ impl NumDigits for u8 {
             len += 1;
         }
         len
+    }
+
+    #[inline]
+    fn pattern_match(&self) -> usize {
+        use ::decimal::dec_8::*;
+        match *self {
+            DEC_0 .. DEC_1 => 1,
+            DEC_1 .. DEC_2 => 2,
+            _ => 3,
+        }
     }
 }
 
@@ -115,6 +126,18 @@ impl NumDigits for u16 {
             len += 1;
         }
         len
+    }
+
+    #[inline]
+    fn pattern_match(&self) -> usize {
+        use ::decimal::dec_16::*;
+        match *self {
+            DEC_0 .. DEC_1 => 1,
+            DEC_1 .. DEC_2 => 2,
+            DEC_2 .. DEC_3 => 3,
+            DEC_3 .. DEC_4 => 4,
+            _ => 5,
+        }
     }
 }
 
@@ -179,6 +202,23 @@ impl NumDigits for u32 {
         }
         len
     }
+
+    #[inline]
+    fn pattern_match(&self) -> usize {
+        use ::decimal::dec_32::*;
+        match *self {
+            DEC_0  .. DEC_1  => 1,
+            DEC_1  .. DEC_2  => 2,
+            DEC_2  .. DEC_3  => 3,
+            DEC_3  .. DEC_4  => 4,
+            DEC_4  .. DEC_5  => 5,
+            DEC_5  .. DEC_6  => 6,
+            DEC_6  .. DEC_7  => 7,
+            DEC_7  .. DEC_8  => 8,
+            DEC_8  .. DEC_9  => 9,
+            _ => 10,
+        }
+    }
 }
 
 impl NumDigits for u64 {
@@ -241,5 +281,32 @@ impl NumDigits for u64 {
             len += 1;
         }
         len
+    }
+
+    #[inline]
+    fn pattern_match(&self) -> usize {
+        use ::decimal::dec_64::*;
+        match *self {
+            DEC_0  .. DEC_1  => 1,
+            DEC_1  .. DEC_2  => 2,
+            DEC_2  .. DEC_3  => 3,
+            DEC_3  .. DEC_4  => 4,
+            DEC_4  .. DEC_5  => 5,
+            DEC_5  .. DEC_6  => 6,
+            DEC_6  .. DEC_7  => 7,
+            DEC_7  .. DEC_8  => 8,
+            DEC_8  .. DEC_9  => 9,
+            DEC_9  .. DEC_10 => 10,
+            DEC_10 .. DEC_11 => 11,
+            DEC_11 .. DEC_12 => 12,
+            DEC_12 .. DEC_13 => 13,
+            DEC_13 .. DEC_14 => 14,
+            DEC_14 .. DEC_15 => 15,
+            DEC_15 .. DEC_16 => 16,
+            DEC_16 .. DEC_17 => 17,
+            DEC_17 .. DEC_18 => 18,
+            DEC_18 .. DEC_19 => 19,
+            _ => 20,
+        }
     }
 }
