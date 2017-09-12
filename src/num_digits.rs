@@ -1,4 +1,5 @@
 pub trait NumDigits {
+    fn log(&self) -> usize;
     fn str_format(&self) -> usize;
     fn str_format_stack(&self) -> usize;
     fn div_loop(&self) -> usize;
@@ -10,6 +11,11 @@ pub trait NumDigits {
 }
 
 impl NumDigits for u8 {
+    #[inline]
+    fn log(&self) -> usize {
+        (*self as f32).log10() as u32 as usize + 1
+    }
+
     #[inline]
     fn str_format(&self) -> usize {
         format!("{}", *self).len()
@@ -107,6 +113,11 @@ impl NumDigits for u8 {
 }
 
 impl NumDigits for u16 {
+    #[inline]
+    fn log(&self) -> usize {
+        (*self as f32).log10() as u32 as usize + 1
+    }
+
     #[inline]
     fn str_format(&self) -> usize {
         format!("{}", *self).len()
@@ -220,6 +231,11 @@ impl NumDigits for u16 {
 }
 
 impl NumDigits for u32 {
+    #[inline]
+    fn log(&self) -> usize {
+        (*self as f64).log10() as u32 as usize + 1
+    }
+
     #[inline]
     fn str_format(&self) -> usize {
         format!("{}", *self).len()
@@ -363,6 +379,11 @@ impl NumDigits for u32 {
 }
 
 impl NumDigits for u64 {
+    #[inline]
+    fn log(&self) -> usize {
+        (*self as f64).log10() as u32 as usize + 1
+    }
+
     #[inline]
     fn str_format(&self) -> usize {
         format!("{}", *self).len()

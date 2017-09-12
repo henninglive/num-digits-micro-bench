@@ -16,6 +16,11 @@ mod u8 {
     }
 
     #[test]
+    fn test_log() {
+        test_helper(|n: u8| n.log());
+    }
+
+    #[test]
     fn test_str_format() {
         test_helper(|n: u8| n.str_format());
     }
@@ -71,6 +76,11 @@ mod u16 {
             assert_eq!(f(n - 1), i);
             assert_eq!(f(n / 2), i);
         }
+    }
+
+    #[test]
+    fn test_log() {
+        test_helper(|n: u16| n.log());
     }
 
     #[test]
@@ -132,6 +142,11 @@ mod u32 {
     }
 
     #[test]
+    fn test_log() {
+        test_helper(|n: u32| n.log());
+    }
+
+    #[test]
     fn test_str_format() {
         test_helper(|n: u32| n.str_format());
     }
@@ -187,6 +202,37 @@ mod u64 {
             assert_eq!(f(n - 1), i);
             assert_eq!(f(n / 2), i);
         }
+    }
+
+    #[test]
+    fn test_log() {
+        use ::decimal::dec_64::*;
+        let f = |n: u64| n.log();
+
+        assert_eq!(f(DEC_0), 1);
+        assert_eq!(f(DEC_1), 2);
+        assert_eq!(f(DEC_2), 3);
+        assert_eq!(f(DEC_3), 4);
+        assert_eq!(f(DEC_4), 5);
+        assert_eq!(f(DEC_5), 6);
+        assert_eq!(f(DEC_6), 7);
+        assert_eq!(f(DEC_7), 8);
+        assert_eq!(f(DEC_8), 9);
+        assert_eq!(f(DEC_9), 10);
+        assert_eq!(f(DEC_10), 11);
+        assert_eq!(f(DEC_11), 12);
+        assert_eq!(f(DEC_12), 13);
+        assert_eq!(f(DEC_13), 14);
+        assert_eq!(f(DEC_14), 15);
+
+        //log10 is inaccurate for large numbers
+        assert!((15 <= f(DEC_15)) && (f(DEC_15) <= 17));
+        assert!((16 <= f(DEC_16)) && (f(DEC_16) <= 18));
+        assert!((17 <= f(DEC_17)) && (f(DEC_17) <= 19));
+        assert!((18 <= f(DEC_18)) && (f(DEC_18) <= 20));
+        assert!((19 <= f(DEC_19)) && (f(DEC_19) <= 20));
+
+        assert_eq!(f(::std::u64::MAX), 20);
     }
 
     #[test]
