@@ -91,6 +91,12 @@ fn bench_binary_search<N: NumDigits + RngVec>(b: &mut Bencher) {
 }
 
 #[inline]
+fn bench_most_significant_bit<N: NumDigits + RngVec>(b: &mut Bencher) {
+    let v = RngVec::rand_vec();
+    b.iter(|| bench_helper(|n: N| n.most_significant_bit(), &v[..]));
+}
+
+#[inline]
 fn bench_zero_impl<N: NumDigits + RngVec>(b: &mut Bencher) {
     let v = RngVec::rand_vec();
     b.iter(|| bench_helper(|n: N| {black_box(n); 0}, &v[..]));
@@ -132,6 +138,11 @@ mod u8 {
     #[bench]
     fn bench_binary_search(b: &mut Bencher) {
         super::bench_binary_search::<u8>(b);
+    }
+
+    #[bench]
+    fn bench_most_significant_bit(b: &mut Bencher) {
+        super::bench_most_significant_bit::<u8>(b);
     }
 
     #[bench]
@@ -179,6 +190,11 @@ mod u16 {
     }
 
     #[bench]
+    fn bench_most_significant_bit(b: &mut Bencher) {
+        super::bench_most_significant_bit::<u16>(b);
+    }
+
+    #[bench]
     fn bench_zero_impl(b: &mut Bencher) {
         super::bench_zero_impl::<u16>(b);
     }
@@ -223,6 +239,11 @@ mod u32 {
     }
 
     #[bench]
+    fn bench_most_significant_bit(b: &mut Bencher) {
+        super::bench_most_significant_bit::<u32>(b);
+    }
+
+    #[bench]
     fn bench_zero_impl(b: &mut Bencher) {
         super::bench_zero_impl::<u32>(b);
     }
@@ -264,6 +285,11 @@ mod u64 {
     #[bench]
     fn bench_binary_search(b: &mut Bencher) {
         super::bench_binary_search::<u64>(b);
+    }
+
+    #[bench]
+    fn bench_most_significant_bit(b: &mut Bencher) {
+        super::bench_most_significant_bit::<u64>(b);
     }
 
     #[bench]

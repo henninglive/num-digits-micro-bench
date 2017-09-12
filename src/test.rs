@@ -49,6 +49,11 @@ mod u8 {
     fn test_binary_search() {
         test_helper(|n: u8| n.binary_search());
     }
+
+    #[test]
+    fn test_most_significant_bit() {
+        test_helper(|n: u8| n.most_significant_bit());
+    }
 }
 
 mod u16 {
@@ -101,6 +106,11 @@ mod u16 {
     #[test]
     fn test_binary_search() {
         test_helper(|n: u16| n.binary_search());
+    }
+
+    #[test]
+    fn test_most_significant_bit() {
+        test_helper(|n: u16| n.most_significant_bit());
     }
 }
 
@@ -155,6 +165,11 @@ mod u32 {
     fn test_binary_search() {
         test_helper(|n: u32| n.binary_search());
     }
+
+    #[test]
+    fn test_most_significant_bit() {
+        test_helper(|n: u32| n.most_significant_bit());
+    }
 }
 
 mod u64 {
@@ -207,5 +222,10 @@ mod u64 {
     #[test]
     fn test_binary_search() {
         test_helper(|n: u64| n.binary_search());
+    }
+
+    #[test]
+    fn test_most_significant_bit() {
+        test_helper(|n: u64| n.most_significant_bit());
     }
 }

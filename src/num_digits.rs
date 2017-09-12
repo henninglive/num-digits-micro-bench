@@ -6,6 +6,7 @@ pub trait NumDigits {
     fn mul_loop(&self) -> usize;
     fn pattern_match(&self) -> usize;
     fn binary_search(&self) -> usize;
+    fn most_significant_bit(&self) -> usize;
 }
 
 impl NumDigits for u8 {
@@ -82,6 +83,25 @@ impl NumDigits for u8 {
             }
         } else {
             3
+        }
+    }
+
+    #[inline]
+    fn most_significant_bit(&self) -> usize {
+        // We know that "2^i <= num < 2^(i+1)",
+        // Where i is the highest set bit of the num.
+        // Use ctlz and lookup tables to resolve number of
+        // didgits with a single if statment.
+        use ::decimal::dec_8::*;
+        use ::decimal::BIN_TO_DEC;
+
+        let i = 8 - (*self).leading_zeros() as usize;
+        let l = BIN_TO_DEC[i];
+        let h = BIN_TO_DEC[i + 1];
+        if *self >= DEC[(h - 1) as usize] {
+            h as usize
+        } else {
+            l as usize
         }
     }
 }
@@ -176,6 +196,25 @@ impl NumDigits for u16 {
             }
         } else {
             5
+        }
+    }
+
+    #[inline]
+    fn most_significant_bit(&self) -> usize {
+        // We know that "2^i <= num < 2^(i+1)",
+        // Where i is the highest set bit of the num.
+        // Use ctlz and lookup tables to resolve number of
+        // didgits with a single if statment.
+        use ::decimal::dec_16::*;
+        use ::decimal::BIN_TO_DEC;
+
+        let i = 16 - (*self).leading_zeros() as usize;
+        let l = BIN_TO_DEC[i];
+        let h = BIN_TO_DEC[i + 1];
+        if *self >= DEC[(h - 1) as usize] {
+            h as usize
+        } else {
+            l as usize
         }
     }
 }
@@ -300,6 +339,25 @@ impl NumDigits for u32 {
             } else {
                 10
             }
+        }
+    }
+
+    #[inline]
+    fn most_significant_bit(&self) -> usize {
+        // We know that "2^i <= num < 2^(i+1)",
+        // Where i is the highest set bit of the num.
+        // Use ctlz and lookup tables to resolve number of
+        // didgits with a single if statment.
+        use ::decimal::dec_32::*;
+        use ::decimal::BIN_TO_DEC;
+
+        let i = 32 - (*self).leading_zeros() as usize;
+        let l = BIN_TO_DEC[i];
+        let h = BIN_TO_DEC[i + 1];
+        if *self >= DEC[(h - 1) as usize] {
+            h as usize
+        } else {
+            l as usize
         }
     }
 }
@@ -475,6 +533,25 @@ impl NumDigits for u64 {
                     20
                 }
             }
+        }
+    }
+
+    #[inline]
+    fn most_significant_bit(&self) -> usize {
+        // We know that "2^i <= num < 2^(i+1)",
+        // Where i is the highest set bit of the num.
+        // Use ctlz and lookup tables to resolve number of
+        // didgits with a single if statment.
+        use ::decimal::dec_64::*;
+        use ::decimal::BIN_TO_DEC;
+
+        let i = 64 - (*self).leading_zeros() as usize;
+        let l = BIN_TO_DEC[i];
+        let h = BIN_TO_DEC[i + 1];
+        if *self >= DEC[(h - 1) as usize] {
+            h as usize
+        } else {
+            l as usize
         }
     }
 }
