@@ -19,6 +19,11 @@ mod u8 {
     fn test_div_loop() {
         test_helper(|n: u8| n.div_loop());
     }
+
+    #[test]
+    fn test_mul() {
+        test_helper(|n: u8| n.mul_loop());
+    }
 }
 
 mod u16 {
@@ -41,6 +46,11 @@ mod u16 {
     #[test]
     fn test_div_loop() {
         test_helper(|n: u16| n.div_loop());
+    }
+
+    #[test]
+    fn test_mul() {
+        test_helper(|n: u16| n.mul_loop());
     }
 }
 
@@ -65,6 +75,11 @@ mod u32 {
     fn test_div_loop() {
         test_helper(|n: u32| n.div_loop());
     }
+
+    #[test]
+    fn test_mul() {
+        test_helper(|n: u32| n.mul_loop());
+    }
 }
 
 mod u64 {
@@ -87,5 +102,10 @@ mod u64 {
     #[test]
     fn test_div_loop() {
         test_helper(|n: u64| n.div_loop());
+    }
+
+    #[test]
+    fn test_mul() {
+        test_helper(|n: u64| n.mul_loop());
     }
 }
