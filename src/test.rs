@@ -53,6 +53,11 @@ mod u8 {
     }
 
     #[test]
+    fn test_cmp_list() {
+        test_helper(|n: Uint| n.cmp_list());
+    }
+
+    #[test]
     fn test_pattern_match() {
         test_helper(|n: Uint| n.pattern_match());
     }
@@ -123,6 +128,11 @@ mod u16 {
     }
 
     #[test]
+    fn test_cmp_list() {
+        test_helper(|n: Uint| n.cmp_list());
+    }
+
+    #[test]
     fn test_pattern_match() {
         test_helper(|n: Uint| n.pattern_match());
     }
@@ -190,6 +200,11 @@ mod u32 {
     #[test]
     fn test_mul() {
         test_helper(|n: Uint| n.mul_loop());
+    }
+
+    #[test]
+    fn test_cmp_list() {
+        test_helper(|n: Uint| n.cmp_list());
     }
 
     #[test]
@@ -286,6 +301,11 @@ mod u64 {
     #[test]
     fn test_mul() {
         test_helper(|n: Uint| n.mul_loop());
+    }
+
+    #[test]
+    fn test_cmp_list() {
+        test_helper(|n: Uint| n.cmp_list());
     }
 
     #[test]
@@ -401,6 +421,11 @@ mod u128 {
     #[test]
     fn test_mul() {
         test_helper(|n: Uint| n.mul_loop());
+    }
+
+    #[test]
+    fn test_cmp_list() {
+        test_helper(|n: Uint| n.cmp_list());
     }
 
     #[test]

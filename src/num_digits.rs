@@ -8,6 +8,7 @@ pub trait NumDigits {
     fn div_loop(&self) -> usize;
     fn div_unrolled(&self) -> usize;
     fn mul_loop(&self) -> usize;
+    fn cmp_list(&self) -> usize;
     fn pattern_match(&self) -> usize;
     fn binary_search(&self) -> usize;
     fn most_significant_bit(&self) -> usize;
@@ -77,6 +78,18 @@ impl NumDigits for u8 {
             len += 1;
         }
         len
+    }
+
+    #[inline]
+    fn cmp_list(&self) -> usize {
+        use ::decimal::dec_8::*;
+        if *self >= DEC_2 {
+            3
+        } else if *self >= DEC_1 {
+            2
+        } else {
+            1
+        }
     }
 
     #[inline]
@@ -194,6 +207,22 @@ impl NumDigits for u16 {
             len += 1;
         }
         len
+    }
+
+    #[inline]
+    fn cmp_list(&self) -> usize {
+        use ::decimal::dec_16::*;
+        if *self >= DEC_4 {
+            5
+        } else if *self >= DEC_3 {
+            4
+        } else if *self >= DEC_2 {
+            3
+        } else if *self >= DEC_1 {
+            2
+        } else {
+            1
+        }
     }
 
     #[inline]
@@ -325,6 +354,32 @@ impl NumDigits for u32 {
             len += 1;
         }
         len
+    }
+
+    #[inline]
+    fn cmp_list(&self) -> usize {
+        use ::decimal::dec_32::*;
+        if *self >= DEC_9 {
+            10
+        } else if *self >= DEC_8 {
+            9
+        } else if *self >= DEC_7 {
+            8
+        } else if *self >= DEC_6 {
+            7
+        } else if *self >= DEC_5 {
+            6
+        } else if *self >= DEC_4 {
+            5
+        } else if *self >= DEC_3 {
+            4
+        } else if *self >= DEC_2 {
+            3
+        } else if *self >= DEC_1 {
+            2
+        } else {
+            1
+        }
     }
 
     #[inline]
@@ -482,6 +537,52 @@ impl NumDigits for u64 {
             len += 1;
         }
         len
+    }
+
+    #[inline]
+    fn cmp_list(&self) -> usize {
+        use ::decimal::dec_64::*;
+        if *self >= DEC_19 {
+            20
+        } else if *self >= DEC_18 {
+            19
+        } else if *self >= DEC_17 {
+            18
+        } else if *self >= DEC_16 {
+            17
+        } else if *self >= DEC_15 {
+            16
+        } else if *self >= DEC_14 {
+            15
+        } else if *self >= DEC_13 {
+            14
+        } else if *self >= DEC_12 {
+            13
+        } else if *self >= DEC_11 {
+            12
+        } else if *self >= DEC_10 {
+            11
+        } else if *self >= DEC_9 {
+            10
+        } else if *self >= DEC_8 {
+            9
+        } else if *self >= DEC_7 {
+            8
+        } else if *self >= DEC_6 {
+            7
+        } else if *self >= DEC_5 {
+            6
+        } else if *self >= DEC_4 {
+            5
+        } else if *self >= DEC_3 {
+            4
+        } else if *self >= DEC_2 {
+            3
+        } else if *self >= DEC_1 {
+            2
+        } else {
+            1
+        }
     }
 
     #[inline]
@@ -686,6 +787,90 @@ impl NumDigits for u128 {
             len += 1;
         }
         len
+    }
+
+    #[inline]
+    fn cmp_list(&self) -> usize {
+        use ::decimal::dec_128::*;
+        if *self >= DEC_38 {
+            39
+        } else if *self >= DEC_37 {
+            38
+        } else if *self >= DEC_36 {
+            37
+        } else if *self >= DEC_35 {
+            36
+        } else if *self >= DEC_34 {
+            35
+        } else if *self >= DEC_33 {
+            34
+        } else if *self >= DEC_32 {
+            33
+        } else if *self >= DEC_31 {
+            32
+        } else if *self >= DEC_30 {
+            31
+        } else if *self >= DEC_29 {
+            30
+        } else if *self >= DEC_28 {
+            29
+        } else if *self >= DEC_27 {
+            28
+        } else if *self >= DEC_26 {
+            27
+        } else if *self >= DEC_25 {
+            26
+        } else if *self >= DEC_24 {
+            25
+        } else if *self >= DEC_23 {
+            24
+        } else if *self >= DEC_22 {
+            23
+        } else if *self >= DEC_21 {
+            22
+        } else if *self >= DEC_20 {
+            21
+        } else if *self >= DEC_19 {
+            20
+        } else if *self >= DEC_18 {
+            19
+        } else if *self >= DEC_17 {
+            18
+        } else if *self >= DEC_16 {
+            17
+        } else if *self >= DEC_15 {
+            16
+        } else if *self >= DEC_14 {
+            15
+        } else if *self >= DEC_13 {
+            14
+        } else if *self >= DEC_12 {
+            13
+        } else if *self >= DEC_11 {
+            12
+        } else if *self >= DEC_10 {
+            11
+        } else if *self >= DEC_9 {
+            10
+        } else if *self >= DEC_8 {
+            9
+        } else if *self >= DEC_7 {
+            8
+        } else if *self >= DEC_6 {
+            7
+        } else if *self >= DEC_5 {
+            6
+        } else if *self >= DEC_4 {
+            5
+        } else if *self >= DEC_3 {
+            4
+        } else if *self >= DEC_2 {
+            3
+        } else if *self >= DEC_1 {
+            2
+        } else {
+            1
+        }
     }
 
     #[inline]
