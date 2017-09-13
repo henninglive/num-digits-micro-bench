@@ -128,295 +128,305 @@ fn bench_zero_impl<N: NumDigits + RngVec>(b: &mut Bencher) {
 mod u8 {
     use super::test::Bencher;
 
+    type Uint = u8;
+
     #[bench]
     fn bench_log(b: &mut Bencher) {
-        super::bench_log::<u8>(b);
+        super::bench_log::<Uint>(b);
     }
 
     #[bench]
     fn bench_str_format(b: &mut Bencher) {
-        super::bench_str_format::<u8>(b);
+        super::bench_str_format::<Uint>(b);
     }
 
     #[bench]
     fn bench_str_format_stack(b: &mut Bencher) {
-        super::bench_str_format_stack::<u8>(b);
+        super::bench_str_format_stack::<Uint>(b);
     }
 
     #[bench]
     fn bench_str_itoa_stack(b: &mut Bencher) {
-        super::bench_str_itoa_stack::<u8>(b);
+        super::bench_str_itoa_stack::<Uint>(b);
     }
 
     #[bench]
     fn bench_div_loop(b: &mut Bencher) {
-        super::bench_div_loop::<u8>(b);
+        super::bench_div_loop::<Uint>(b);
     }
 
     #[bench]
     fn bench_div_unrolled(b: &mut Bencher) {
-        super::bench_div_unrolled::<u8>(b);
+        super::bench_div_unrolled::<Uint>(b);
     }
 
     #[bench]
     fn bench_mul_loop(b: &mut Bencher) {
-        super::bench_mul_loop::<u8>(b);
+        super::bench_mul_loop::<Uint>(b);
     }
 
     #[bench]
     fn bench_pattern_match(b: &mut Bencher) {
-        super::bench_pattern_match::<u8>(b);
+        super::bench_pattern_match::<Uint>(b);
     }
 
     #[bench]
     fn bench_binary_search(b: &mut Bencher) {
-        super::bench_binary_search::<u8>(b);
+        super::bench_binary_search::<Uint>(b);
     }
 
     #[bench]
     fn bench_most_significant_bit(b: &mut Bencher) {
-        super::bench_most_significant_bit::<u8>(b);
+        super::bench_most_significant_bit::<Uint>(b);
     }
 
     #[bench]
     fn bench_zero_impl(b: &mut Bencher) {
-        super::bench_zero_impl::<u8>(b);
+        super::bench_zero_impl::<Uint>(b);
     }
 }
 
 mod u16 {
     use super::test::Bencher;
 
+    type Uint = u16;
+
     #[bench]
     fn bench_log(b: &mut Bencher) {
-        super::bench_log::<u16>(b);
+        super::bench_log::<Uint>(b);
     }
 
     #[bench]
     fn bench_str_format(b: &mut Bencher) {
-        super::bench_str_format::<u16>(b);
+        super::bench_str_format::<Uint>(b);
     }
 
     #[bench]
     fn bench_str_format_stack(b: &mut Bencher) {
-        super::bench_str_format_stack::<u16>(b);
+        super::bench_str_format_stack::<Uint>(b);
     }
 
     #[bench]
     fn bench_str_itoa_stack(b: &mut Bencher) {
-        super::bench_str_itoa_stack::<u16>(b);
+        super::bench_str_itoa_stack::<Uint>(b);
     }
 
     #[bench]
     fn bench_div_loop(b: &mut Bencher) {
-        super::bench_div_loop::<u16>(b);
+        super::bench_div_loop::<Uint>(b);
     }
 
     #[bench]
     fn bench_div_unrolled(b: &mut Bencher) {
-        super::bench_div_unrolled::<u16>(b);
+        super::bench_div_unrolled::<Uint>(b);
     }
 
     #[bench]
     fn bench_mul_loop(b: &mut Bencher) {
-        super::bench_mul_loop::<u16>(b);
+        super::bench_mul_loop::<Uint>(b);
     }
 
     #[bench]
     fn bench_pattern_match(b: &mut Bencher) {
-        super::bench_pattern_match::<u16>(b);
+        super::bench_pattern_match::<Uint>(b);
     }
 
     #[bench]
     fn bench_binary_search(b: &mut Bencher) {
-        super::bench_binary_search::<u16>(b);
+        super::bench_binary_search::<Uint>(b);
     }
 
     #[bench]
     fn bench_most_significant_bit(b: &mut Bencher) {
-        super::bench_most_significant_bit::<u16>(b);
+        super::bench_most_significant_bit::<Uint>(b);
     }
 
     #[bench]
     fn bench_zero_impl(b: &mut Bencher) {
-        super::bench_zero_impl::<u16>(b);
+        super::bench_zero_impl::<Uint>(b);
     }
 }
 
 mod u32 {
     use super::test::Bencher;
 
+    type Uint = u32;
+
     #[bench]
     fn bench_log(b: &mut Bencher) {
-        super::bench_log::<u32>(b);
+        super::bench_log::<Uint>(b);
     }
 
     #[bench]
     fn bench_str_format(b: &mut Bencher) {
-        super::bench_str_format::<u32>(b);
+        super::bench_str_format::<Uint>(b);
     }
 
     #[bench]
     fn bench_str_format_stack(b: &mut Bencher) {
-        super::bench_str_format_stack::<u32>(b);
+        super::bench_str_format_stack::<Uint>(b);
     }
 
     #[bench]
     fn bench_str_itoa_stack(b: &mut Bencher) {
-        super::bench_str_itoa_stack::<u32>(b);
+        super::bench_str_itoa_stack::<Uint>(b);
     }
 
     #[bench]
     fn bench_div_loop(b: &mut Bencher) {
-        super::bench_div_loop::<u32>(b);
+        super::bench_div_loop::<Uint>(b);
     }
 
     #[bench]
     fn bench_div_unrolled(b: &mut Bencher) {
-        super::bench_div_unrolled::<u32>(b);
+        super::bench_div_unrolled::<Uint>(b);
     }
 
     #[bench]
     fn bench_mul_loop(b: &mut Bencher) {
-        super::bench_mul_loop::<u32>(b);
+        super::bench_mul_loop::<Uint>(b);
     }
 
     #[bench]
     fn bench_pattern_match(b: &mut Bencher) {
-        super::bench_pattern_match::<u32>(b);
+        super::bench_pattern_match::<Uint>(b);
     }
 
     #[bench]
     fn bench_binary_search(b: &mut Bencher) {
-        super::bench_binary_search::<u32>(b);
+        super::bench_binary_search::<Uint>(b);
     }
 
     #[bench]
     fn bench_most_significant_bit(b: &mut Bencher) {
-        super::bench_most_significant_bit::<u32>(b);
+        super::bench_most_significant_bit::<Uint>(b);
     }
 
     #[bench]
     fn bench_zero_impl(b: &mut Bencher) {
-        super::bench_zero_impl::<u32>(b);
+        super::bench_zero_impl::<Uint>(b);
     }
 }
 
 mod u64 {
     use super::test::Bencher;
 
+    type Uint = u64;
+
     #[bench]
     fn bench_log(b: &mut Bencher) {
-        super::bench_log::<u64>(b);
+        super::bench_log::<Uint>(b);
     }
 
     #[bench]
     fn bench_str_format(b: &mut Bencher) {
-        super::bench_str_format::<u64>(b);
+        super::bench_str_format::<Uint>(b);
     }
 
     #[bench]
     fn bench_str_format_stack(b: &mut Bencher) {
-        super::bench_str_format_stack::<u64>(b);
+        super::bench_str_format_stack::<Uint>(b);
     }
 
     #[bench]
     fn bench_str_itoa_stack(b: &mut Bencher) {
-        super::bench_str_itoa_stack::<u64>(b);
+        super::bench_str_itoa_stack::<Uint>(b);
     }
 
     #[bench]
     fn bench_div_loop(b: &mut Bencher) {
-        super::bench_div_loop::<u64>(b);
+        super::bench_div_loop::<Uint>(b);
     }
 
     #[bench]
     fn bench_div_unrolled(b: &mut Bencher) {
-        super::bench_div_unrolled::<u64>(b);
+        super::bench_div_unrolled::<Uint>(b);
     }
 
     #[bench]
     fn bench_mul_loop(b: &mut Bencher) {
-        super::bench_mul_loop::<u64>(b);
+        super::bench_mul_loop::<Uint>(b);
     }
 
     #[bench]
     fn bench_pattern_match(b: &mut Bencher) {
-        super::bench_pattern_match::<u64>(b);
+        super::bench_pattern_match::<Uint>(b);
     }
 
     #[bench]
     fn bench_binary_search(b: &mut Bencher) {
-        super::bench_binary_search::<u64>(b);
+        super::bench_binary_search::<Uint>(b);
     }
 
     #[bench]
     fn bench_most_significant_bit(b: &mut Bencher) {
-        super::bench_most_significant_bit::<u64>(b);
+        super::bench_most_significant_bit::<Uint>(b);
     }
 
     #[bench]
     fn bench_zero_impl(b: &mut Bencher) {
-        super::bench_zero_impl::<u64>(b);
+        super::bench_zero_impl::<Uint>(b);
     }
 }
 
 mod u128 {
     use super::test::Bencher;
 
+    type Uint = u128;
+
     #[bench]
     fn bench_log(b: &mut Bencher) {
-        super::bench_log::<u128>(b);
+        super::bench_log::<Uint>(b);
     }
 
     #[bench]
     fn bench_str_format(b: &mut Bencher) {
-        super::bench_str_format::<u128>(b);
+        super::bench_str_format::<Uint>(b);
     }
 
     #[bench]
     fn bench_str_format_stack(b: &mut Bencher) {
-        super::bench_str_format_stack::<u128>(b);
+        super::bench_str_format_stack::<Uint>(b);
     }
 
     #[bench]
     #[ignore]
     fn bench_str_itoa_stack(b: &mut Bencher) {
-        super::bench_str_itoa_stack::<u128>(b);
+        super::bench_str_itoa_stack::<Uint>(b);
     }
 
     #[bench]
     fn bench_div_loop(b: &mut Bencher) {
-        super::bench_div_loop::<u128>(b);
+        super::bench_div_loop::<Uint>(b);
     }
 
     #[bench]
     fn bench_div_unrolled(b: &mut Bencher) {
-        super::bench_div_unrolled::<u128>(b);
+        super::bench_div_unrolled::<Uint>(b);
     }
 
     #[bench]
     fn bench_mul_loop(b: &mut Bencher) {
-        super::bench_mul_loop::<u128>(b);
+        super::bench_mul_loop::<Uint>(b);
     }
 
     #[bench]
     fn bench_pattern_match(b: &mut Bencher) {
-        super::bench_pattern_match::<u128>(b);
+        super::bench_pattern_match::<Uint>(b);
     }
 
     #[bench]
     fn bench_binary_search(b: &mut Bencher) {
-        super::bench_binary_search::<u128>(b);
+        super::bench_binary_search::<Uint>(b);
     }
 
     #[bench]
     fn bench_most_significant_bit(b: &mut Bencher) {
-        super::bench_most_significant_bit::<u128>(b);
+        super::bench_most_significant_bit::<Uint>(b);
     }
 
     #[bench]
     fn bench_zero_impl(b: &mut Bencher) {
-        super::bench_zero_impl::<u128>(b);
+        super::bench_zero_impl::<Uint>(b);
     }
 }

@@ -1,6 +1,8 @@
 mod u8 {
     use ::num_digits::NumDigits;
 
+    type Uint = u8;
+
     fn test_helper<F: Fn(u8) -> usize>(f: F) {
         assert_eq!(f(0), 1);
         assert_eq!(f(::std::u8::MAX), 3);
@@ -17,57 +19,59 @@ mod u8 {
 
     #[test]
     fn test_log() {
-        test_helper(|n: u8| n.log());
+        test_helper(|n: Uint| n.log());
     }
 
     #[test]
     fn test_str_format() {
-        test_helper(|n: u8| n.str_format());
+        test_helper(|n: Uint| n.str_format());
     }
 
     #[test]
     fn test_str_format_stack() {
-        test_helper(|n: u8| n.str_format_stack());
+        test_helper(|n: Uint| n.str_format_stack());
     }
 
     #[test]
     fn test_str_itoa_stack() {
-        test_helper(|n: u8| n.str_itoa_stack());
+        test_helper(|n: Uint| n.str_itoa_stack());
     }
 
     #[test]
     fn test_div_loop() {
-        test_helper(|n: u8| n.div_loop());
+        test_helper(|n: Uint| n.div_loop());
     }
 
     #[test]
     fn test_div_unrolled() {
-        test_helper(|n: u8| n.div_unrolled());
+        test_helper(|n: Uint| n.div_unrolled());
     }
 
     #[test]
     fn test_mul() {
-        test_helper(|n: u8| n.mul_loop());
+        test_helper(|n: Uint| n.mul_loop());
     }
 
     #[test]
     fn test_pattern_match() {
-        test_helper(|n: u8| n.pattern_match());
+        test_helper(|n: Uint| n.pattern_match());
     }
 
     #[test]
     fn test_binary_search() {
-        test_helper(|n: u8| n.binary_search());
+        test_helper(|n: Uint| n.binary_search());
     }
 
     #[test]
     fn test_most_significant_bit() {
-        test_helper(|n: u8| n.most_significant_bit());
+        test_helper(|n: Uint| n.most_significant_bit());
     }
 }
 
 mod u16 {
     use ::num_digits::NumDigits;
+
+    type Uint = u16;
 
     fn test_helper<F: Fn(u16) -> usize>(f: F){
         assert_eq!(f(0), 1);
@@ -85,57 +89,59 @@ mod u16 {
 
     #[test]
     fn test_log() {
-        test_helper(|n: u16| n.log());
+        test_helper(|n: Uint| n.log());
     }
 
     #[test]
     fn test_str_format() {
-        test_helper(|n: u16| n.str_format());
+        test_helper(|n: Uint| n.str_format());
     }
 
     #[test]
     fn test_str_format_stack() {
-        test_helper(|n: u16| n.str_format_stack());
+        test_helper(|n: Uint| n.str_format_stack());
     }
 
     #[test]
     fn test_str_itoa_stack() {
-        test_helper(|n: u16| n.str_itoa_stack());
+        test_helper(|n: Uint| n.str_itoa_stack());
     }
 
     #[test]
     fn test_div_loop() {
-        test_helper(|n: u16| n.div_loop());
+        test_helper(|n: Uint| n.div_loop());
     }
 
     #[test]
     fn test_div_unrolled() {
-        test_helper(|n: u16| n.div_unrolled());
+        test_helper(|n: Uint| n.div_unrolled());
     }
 
     #[test]
     fn test_mul() {
-        test_helper(|n: u16| n.mul_loop());
+        test_helper(|n: Uint| n.mul_loop());
     }
 
     #[test]
     fn test_pattern_match() {
-        test_helper(|n: u16| n.pattern_match());
+        test_helper(|n: Uint| n.pattern_match());
     }
 
     #[test]
     fn test_binary_search() {
-        test_helper(|n: u16| n.binary_search());
+        test_helper(|n: Uint| n.binary_search());
     }
 
     #[test]
     fn test_most_significant_bit() {
-        test_helper(|n: u16| n.most_significant_bit());
+        test_helper(|n: Uint| n.most_significant_bit());
     }
 }
 
 mod u32 {
     use ::num_digits::NumDigits;
+
+    type Uint = u32;
 
     fn test_helper<F: Fn(u32) -> usize>(f: F){
         assert_eq!(f(0), 1);
@@ -153,57 +159,59 @@ mod u32 {
 
     #[test]
     fn test_log() {
-        test_helper(|n: u32| n.log());
+        test_helper(|n: Uint| n.log());
     }
 
     #[test]
     fn test_str_format() {
-        test_helper(|n: u32| n.str_format());
+        test_helper(|n: Uint| n.str_format());
     }
 
     #[test]
     fn test_str_format_stack() {
-        test_helper(|n: u32| n.str_format_stack());
+        test_helper(|n: Uint| n.str_format_stack());
     }
 
     #[test]
     fn test_str_itoa_stack() {
-        test_helper(|n: u32| n.str_itoa_stack());
+        test_helper(|n: Uint| n.str_itoa_stack());
     }
 
     #[test]
     fn test_div_loop() {
-        test_helper(|n: u32| n.div_loop());
+        test_helper(|n: Uint| n.div_loop());
     }
 
     #[test]
     fn test_div_unrolled() {
-        test_helper(|n: u32| n.div_unrolled());
+        test_helper(|n: Uint| n.div_unrolled());
     }
 
     #[test]
     fn test_mul() {
-        test_helper(|n: u32| n.mul_loop());
+        test_helper(|n: Uint| n.mul_loop());
     }
 
     #[test]
     fn test_pattern_match() {
-        test_helper(|n: u32| n.pattern_match());
+        test_helper(|n: Uint| n.pattern_match());
     }
 
     #[test]
     fn test_binary_search() {
-        test_helper(|n: u32| n.binary_search());
+        test_helper(|n: Uint| n.binary_search());
     }
 
     #[test]
     fn test_most_significant_bit() {
-        test_helper(|n: u32| n.most_significant_bit());
+        test_helper(|n: Uint| n.most_significant_bit());
     }
 }
 
 mod u64 {
     use ::num_digits::NumDigits;
+
+    type Uint = u64;
 
     fn test_helper<F: Fn(u64) -> usize>(f: F){
         assert_eq!(f(0), 1);
@@ -252,52 +260,54 @@ mod u64 {
 
     #[test]
     fn test_str_format() {
-        test_helper(|n: u64| n.str_format());
+        test_helper(|n: Uint| n.str_format());
     }
 
     #[test]
     fn test_str_format_stack() {
-        test_helper(|n: u64| n.str_format_stack());
+        test_helper(|n: Uint| n.str_format_stack());
     }
 
     #[test]
     fn test_str_itoa_stack() {
-        test_helper(|n: u64| n.str_itoa_stack());
+        test_helper(|n: Uint| n.str_itoa_stack());
     }
 
     #[test]
     fn test_div_loop() {
-        test_helper(|n: u64| n.div_loop());
+        test_helper(|n: Uint| n.div_loop());
     }
 
     #[test]
     fn test_div_unrolled() {
-        test_helper(|n: u64| n.div_unrolled());
+        test_helper(|n: Uint| n.div_unrolled());
     }
 
     #[test]
     fn test_mul() {
-        test_helper(|n: u64| n.mul_loop());
+        test_helper(|n: Uint| n.mul_loop());
     }
 
     #[test]
     fn test_pattern_match() {
-        test_helper(|n: u64| n.pattern_match());
+        test_helper(|n: Uint| n.pattern_match());
     }
 
     #[test]
     fn test_binary_search() {
-        test_helper(|n: u64| n.binary_search());
+        test_helper(|n: Uint| n.binary_search());
     }
 
     #[test]
     fn test_most_significant_bit() {
-        test_helper(|n: u64| n.most_significant_bit());
+        test_helper(|n: Uint| n.most_significant_bit());
     }
 }
 
 mod u128 {
     use ::num_digits::NumDigits;
+
+    type Uint = u128;
 
     fn test_helper<F: Fn(u128) -> usize>(f: F){
         assert_eq!(f(0), 1);
@@ -364,47 +374,47 @@ mod u128 {
 
     #[test]
     fn test_str_format() {
-        test_helper(|n: u128| n.str_format());
+        test_helper(|n: Uint| n.str_format());
     }
 
     #[test]
     fn test_str_format_stack() {
-        test_helper(|n: u128| n.str_format_stack());
+        test_helper(|n: Uint| n.str_format_stack());
     }
 
     #[test]
     #[should_panic]
     fn test_str_itoa_stack() {
-        test_helper(|n: u128| n.str_itoa_stack());
+        test_helper(|n: Uint| n.str_itoa_stack());
     }
 
     #[test]
     fn test_div() {
-        test_helper(|n: u128| n.div_loop());
+        test_helper(|n: Uint| n.div_loop());
     }
 
     #[test]
     fn test_div_unrolled() {
-        test_helper(|n: u128| n.div_unrolled());
+        test_helper(|n: Uint| n.div_unrolled());
     }
 
     #[test]
     fn test_mul() {
-        test_helper(|n: u128| n.mul_loop());
+        test_helper(|n: Uint| n.mul_loop());
     }
 
     #[test]
     fn test_pattern_match() {
-        test_helper(|n: u128| n.pattern_match());
+        test_helper(|n: Uint| n.pattern_match());
     }
 
     #[test]
     fn test_binary_search() {
-        test_helper(|n: u128| n.binary_search());
+        test_helper(|n: Uint| n.binary_search());
     }
 
     #[test]
     fn test_most_significant_bit() {
-        test_helper(|n: u128| n.most_significant_bit());
+        test_helper(|n: Uint| n.most_significant_bit());
     }
 }
