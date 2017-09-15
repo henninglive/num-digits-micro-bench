@@ -244,7 +244,7 @@ mod u64 {
 
     #[test]
     fn test_log() {
-        use ::decimal::dec_64::*;
+        use ::decimal::u64::*;
         let f = |n: u64| n.log();
 
         assert_eq!(f(DEC_0), 1);
@@ -345,7 +345,7 @@ mod u128 {
 
     #[test]
     fn test_log() {
-        use ::decimal::dec_128::*;
+        use ::decimal::u128::*;
         let f = |n: u128| n.log();
 
         assert_eq!(f(DEC_0), 1);

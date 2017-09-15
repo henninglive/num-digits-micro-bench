@@ -82,7 +82,7 @@ impl NumDigits for u8 {
 
     #[inline]
     fn cmp_list(&self) -> usize {
-        use ::decimal::dec_8::*;
+        use ::decimal::u8::*;
         if *self >= DEC_2 {
             3
         } else if *self >= DEC_1 {
@@ -94,7 +94,7 @@ impl NumDigits for u8 {
 
     #[inline]
     fn pattern_match(&self) -> usize {
-        use ::decimal::dec_8::*;
+        use ::decimal::u8::*;
         use ::std::u8::MIN;
         match *self {
               MIN .. DEC_1 => 1,
@@ -105,7 +105,7 @@ impl NumDigits for u8 {
 
     #[inline]
     fn binary_search(&self) -> usize {
-        use ::decimal::dec_8::*;
+        use ::decimal::u8::*;
         let num = *self;
         if num < DEC_2 {
             if num < DEC_1 {
@@ -124,7 +124,7 @@ impl NumDigits for u8 {
         // Where i is the highest set bit of the num.
         // Use ctlz and lookup tables to resolve number of
         // didgits with a single if statment.
-        use ::decimal::dec_8::*;
+        use ::decimal::u8::*;
         use ::decimal::BIN_TO_DEC;
 
         let i = 8 - (*self).leading_zeros() as usize;
@@ -212,7 +212,7 @@ impl NumDigits for u16 {
 
     #[inline]
     fn cmp_list(&self) -> usize {
-        use ::decimal::dec_16::*;
+        use ::decimal::u16::*;
         if *self >= DEC_4 {
             5
         } else if *self >= DEC_3 {
@@ -228,7 +228,7 @@ impl NumDigits for u16 {
 
     #[inline]
     fn pattern_match(&self) -> usize {
-        use ::decimal::dec_16::*;
+        use ::decimal::u16::*;
         use ::std::u16::MIN;
         match *self {
               MIN .. DEC_1 => 1,
@@ -241,7 +241,7 @@ impl NumDigits for u16 {
 
     #[inline]
     fn binary_search(&self) -> usize {
-        use ::decimal::dec_16::*;
+        use ::decimal::u16::*;
         let num = *self;
         if num < DEC_4 {
             if num < DEC_2 {
@@ -268,7 +268,7 @@ impl NumDigits for u16 {
         // Where i is the highest set bit of the num.
         // Use ctlz and lookup tables to resolve number of
         // didgits with a single if statment.
-        use ::decimal::dec_16::*;
+        use ::decimal::u16::*;
         use ::decimal::BIN_TO_DEC;
 
         let i = 16 - (*self).leading_zeros() as usize;
@@ -360,7 +360,7 @@ impl NumDigits for u32 {
 
     #[inline]
     fn cmp_list(&self) -> usize {
-        use ::decimal::dec_32::*;
+        use ::decimal::u32::*;
         if *self >= DEC_9 {
             10
         } else if *self >= DEC_8 {
@@ -386,7 +386,7 @@ impl NumDigits for u32 {
 
     #[inline]
     fn pattern_match(&self) -> usize {
-        use ::decimal::dec_32::*;
+        use ::decimal::u32::*;
         use ::std::u32::MIN;
         match *self {
               MIN  .. DEC_1  => 1,
@@ -404,7 +404,7 @@ impl NumDigits for u32 {
 
     #[inline]
     fn binary_search(&self) -> usize {
-        use ::decimal::dec_32::*;
+        use ::decimal::u32::*;
         let num = *self;
         if num < DEC_8 {
             if num < DEC_4 {
@@ -452,7 +452,7 @@ impl NumDigits for u32 {
         // Where i is the highest set bit of the num.
         // Use ctlz and lookup tables to resolve number of
         // didgits with a single if statment.
-        use ::decimal::dec_32::*;
+        use ::decimal::u32::*;
         use ::decimal::BIN_TO_DEC;
 
         let i = 32 - (*self).leading_zeros() as usize;
@@ -544,7 +544,7 @@ impl NumDigits for u64 {
 
     #[inline]
     fn cmp_list(&self) -> usize {
-        use ::decimal::dec_64::*;
+        use ::decimal::u64::*;
         if *self >= DEC_19 {
             20
         } else if *self >= DEC_18 {
@@ -590,7 +590,7 @@ impl NumDigits for u64 {
 
     #[inline]
     fn pattern_match(&self) -> usize {
-        use ::decimal::dec_64::*;
+        use ::decimal::u64::*;
         use ::std::u64::MIN;
         match *self {
               MIN  .. DEC_1  => 1,
@@ -618,7 +618,7 @@ impl NumDigits for u64 {
 
     #[inline]
     fn binary_search(&self) -> usize {
-        use ::decimal::dec_64::*;
+        use ::decimal::u64::*;
         let num = *self;
         if num < DEC_16 {
             if num < DEC_8 {
@@ -707,7 +707,7 @@ impl NumDigits for u64 {
         // Where i is the highest set bit of the num.
         // Use ctlz and lookup tables to resolve number of
         // didgits with a single if statment.
-        use ::decimal::dec_64::*;
+        use ::decimal::u64::*;
         use ::decimal::BIN_TO_DEC;
 
         let i = 64 - (*self).leading_zeros() as usize;
@@ -795,7 +795,7 @@ impl NumDigits for u128 {
 
     #[inline]
     fn cmp_list(&self) -> usize {
-        use ::decimal::dec_128::*;
+        use ::decimal::u128::*;
         if *self >= DEC_38 {
             39
         } else if *self >= DEC_37 {
@@ -879,7 +879,7 @@ impl NumDigits for u128 {
 
     #[inline]
     fn pattern_match(&self) -> usize {
-        use ::decimal::dec_128::*;
+        use ::decimal::u128::*;
         use ::std::u128::MIN;
         match *self {
               MIN  .. DEC_1  => 1,
@@ -926,7 +926,7 @@ impl NumDigits for u128 {
 
     #[inline]
     fn binary_search(&self) -> usize {
-        use ::decimal::dec_128::*;
+        use ::decimal::u128::*;
         let num = *self;
         if num < DEC_32 {
             if num < DEC_16 {
@@ -1094,7 +1094,7 @@ impl NumDigits for u128 {
         // Where i is the highest set bit of the num.
         // Use ctlz and lookup tables to resolve number of
         // didgits with a single if statment.
-        use ::decimal::dec_128::*;
+        use ::decimal::u128::*;
         use ::decimal::BIN_TO_DEC;
 
         let i = 128 - (*self).leading_zeros() as usize;

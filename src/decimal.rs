@@ -83,14 +83,14 @@ macro_rules! dec_n {
     ($t:ident, 38) => (dec_n!($t, 37); pub const DEC_38: $t = pow10!(38););
 }
 
-pub mod dec_8 {
+pub mod u8 {
     dec_n!(u8, 2);
     pub static DEC: [u8; 4] = [
         DEC_0, DEC_1, DEC_2, DEC_2,
     ];
 }
 
-pub mod dec_16 {
+pub mod u16 {
     dec_n!(u16, 4);
     pub static DEC: [u16; 6] = [
         DEC_0, DEC_1, DEC_2, DEC_3, DEC_4,
@@ -98,7 +98,7 @@ pub mod dec_16 {
     ];
 }
 
-pub mod dec_32 {
+pub mod u32 {
     dec_n!(u32, 9);
     pub static DEC: [u32; 11] = [
         DEC_0, DEC_1, DEC_2, DEC_3, DEC_4,
@@ -107,7 +107,7 @@ pub mod dec_32 {
     ];
 }
 
-pub mod dec_64 {
+pub mod u64 {
     dec_n!(u64, 19);
     pub static DEC: [u64; 21] = [
         DEC_0,  DEC_1,  DEC_2,  DEC_3,  DEC_4,
@@ -118,7 +118,7 @@ pub mod dec_64 {
     ];
 }
 
-pub mod dec_128 {
+pub mod u128 {
     dec_n!(u128, 38);
     pub static DEC: [u128; 40] = [
         DEC_0,  DEC_1,  DEC_2,  DEC_3,  DEC_4,
