@@ -95,8 +95,9 @@ impl NumDigits for u8 {
     #[inline]
     fn pattern_match(&self) -> usize {
         use ::decimal::dec_8::*;
+        use ::std::u8::MIN;
         match *self {
-            DEC_0 .. DEC_1 => 1,
+              MIN .. DEC_1 => 1,
             DEC_1 .. DEC_2 => 2,
             _ => 3,
         }
@@ -228,8 +229,9 @@ impl NumDigits for u16 {
     #[inline]
     fn pattern_match(&self) -> usize {
         use ::decimal::dec_16::*;
+        use ::std::u16::MIN;
         match *self {
-            DEC_0 .. DEC_1 => 1,
+              MIN .. DEC_1 => 1,
             DEC_1 .. DEC_2 => 2,
             DEC_2 .. DEC_3 => 3,
             DEC_3 .. DEC_4 => 4,
@@ -385,8 +387,9 @@ impl NumDigits for u32 {
     #[inline]
     fn pattern_match(&self) -> usize {
         use ::decimal::dec_32::*;
+        use ::std::u32::MIN;
         match *self {
-            DEC_0  .. DEC_1  => 1,
+              MIN  .. DEC_1  => 1,
             DEC_1  .. DEC_2  => 2,
             DEC_2  .. DEC_3  => 3,
             DEC_3  .. DEC_4  => 4,
@@ -588,8 +591,9 @@ impl NumDigits for u64 {
     #[inline]
     fn pattern_match(&self) -> usize {
         use ::decimal::dec_64::*;
+        use ::std::u64::MIN;
         match *self {
-            DEC_0  .. DEC_1  => 1,
+              MIN  .. DEC_1  => 1,
             DEC_1  .. DEC_2  => 2,
             DEC_2  .. DEC_3  => 3,
             DEC_3  .. DEC_4  => 4,
@@ -876,8 +880,9 @@ impl NumDigits for u128 {
     #[inline]
     fn pattern_match(&self) -> usize {
         use ::decimal::dec_128::*;
+        use ::std::u128::MIN;
         match *self {
-            DEC_0  .. DEC_1  => 1,
+              MIN  .. DEC_1  => 1,
             DEC_1  .. DEC_2  => 2,
             DEC_2  .. DEC_3  => 3,
             DEC_3  .. DEC_4  => 4,
