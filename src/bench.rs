@@ -22,6 +22,28 @@ macro_rules! bench_setup {
     };
 }
 
+macro_rules! bench_test {
+    (u128, str_itoa_stack) => {
+        #[ignore]
+        #[bench]
+        fn str_itoa_stack(_: &mut Bencher) {}
+    };
+    ($t:ident, zero_impl) => {
+        #[bench]
+        fn zero_impl(b: &mut Bencher) {
+            let v = bench_setup();
+            b.iter(|| bench_helper(|n: $t| {black_box(n); 0}, &v[..]));
+        }
+    };
+    ($t:ident, $name:ident) => {
+        #[bench]
+        fn $name(b: &mut Bencher) {
+            let v = bench_setup();
+            b.iter(|| bench_helper(|n: $t| n.$name(), &v[..]));
+        }
+    };
+}
+
 macro_rules! bench {
     ( $( $t:ident ),* ) => {
         $(
@@ -39,77 +61,18 @@ macro_rules! bench {
                     }
                 }
 
-                #[bench]
-                fn bench_log(b: &mut Bencher) {
-                    let v = bench_setup();
-                    b.iter(|| bench_helper(|n: $t| n.log(), &v[..]));
-                }
-
-                #[bench]
-                fn bench_str_format(b: &mut Bencher) {
-                    let v = bench_setup();
-                    b.iter(|| bench_helper(|n: $t| n.str_format(), &v[..]));
-                }
-
-                #[bench]
-                fn bench_str_format_stack(b: &mut Bencher) {
-                    let v = bench_setup();
-                    b.iter(|| bench_helper(|n: $t| n.str_format_stack(), &v[..]));
-                }
-
-                #[bench]
-                fn bench_str_itoa_stack(b: &mut Bencher) {
-                    let v = bench_setup();
-                    b.iter(|| bench_helper(|n: $t| n.str_itoa_stack(), &v[..]));
-                }
-
-                #[bench]
-                fn bench_div_loop(b: &mut Bencher) {
-                    let v = bench_setup();
-                    b.iter(|| bench_helper(|n: $t| n.div_loop(), &v[..]));
-                }
-
-                #[bench]
-                fn bench_div_unrolled(b: &mut Bencher) {
-                    let v = bench_setup();
-                    b.iter(|| bench_helper(|n: $t| n.div_unrolled(), &v[..]));
-                }
-
-                #[bench]
-                fn bench_mul_loop(b: &mut Bencher) {
-                    let v = bench_setup();
-                    b.iter(|| bench_helper(|n: $t| n.mul_loop(), &v[..]));
-                }
-
-                #[bench]
-                fn bench_cmp_list(b: &mut Bencher) {
-                    let v = bench_setup();
-                    b.iter(|| bench_helper(|n: $t| n.cmp_list(), &v[..]));
-                }
-
-                #[bench]
-                fn bench_pattern_match(b: &mut Bencher) {
-                    let v = bench_setup();
-                    b.iter(|| bench_helper(|n: $t| n.pattern_match(), &v[..]));
-                }
-
-                #[bench]
-                fn bench_binary_search(b: &mut Bencher) {
-                    let v = bench_setup();
-                    b.iter(|| bench_helper(|n: $t| n.binary_search(), &v[..]));
-                }
-
-                #[bench]
-                fn bench_most_significant_bit(b: &mut Bencher) {
-                    let v = bench_setup();
-                    b.iter(|| bench_helper(|n: $t| n.most_significant_bit(), &v[..]));
-                }
-
-                #[bench]
-                fn bench_zero_impl(b: &mut Bencher) {
-                    let v = bench_setup();
-                    b.iter(|| bench_helper(|n: $t| {black_box(n); 0}, &v[..]));
-                }
+                bench_test!($t, log);
+                bench_test!($t, str_format);
+                bench_test!($t, str_format_stack);
+                bench_test!($t, str_itoa_stack);
+                bench_test!($t, div_loop);
+                bench_test!($t, div_unrolled);
+                bench_test!($t, mul_loop);
+                bench_test!($t, cmp_list);
+                bench_test!($t, pattern_match);
+                bench_test!($t, binary_search);
+                bench_test!($t, most_significant_bit);
+                bench_test!($t, zero_impl);
             }
         )*
     };
