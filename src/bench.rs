@@ -22,7 +22,7 @@ macro_rules! bench_setup {
     };
 }
 
-macro_rules! bench_test {
+macro_rules! bench_methode {
     (u128, str_itoa_stack) => {
         #[ignore]
         #[bench]
@@ -44,7 +44,7 @@ macro_rules! bench_test {
     };
 }
 
-macro_rules! bench {
+macro_rules! bench_type {
     ( $( $t:ident ),* ) => {
         $(
             mod $t {
@@ -61,21 +61,21 @@ macro_rules! bench {
                     }
                 }
 
-                bench_test!($t, log);
-                bench_test!($t, str_format);
-                bench_test!($t, str_format_stack);
-                bench_test!($t, str_itoa_stack);
-                bench_test!($t, div_loop);
-                bench_test!($t, div_unrolled);
-                bench_test!($t, mul_loop);
-                bench_test!($t, cmp_list);
-                bench_test!($t, pattern_match);
-                bench_test!($t, binary_search);
-                bench_test!($t, most_significant_bit);
-                bench_test!($t, zero_impl);
+                bench_methode!($t, log);
+                bench_methode!($t, str_format);
+                bench_methode!($t, str_format_stack);
+                bench_methode!($t, str_itoa_stack);
+                bench_methode!($t, div_loop);
+                bench_methode!($t, div_unrolled);
+                bench_methode!($t, mul_loop);
+                bench_methode!($t, cmp_list);
+                bench_methode!($t, pattern_match);
+                bench_methode!($t, binary_search);
+                bench_methode!($t, most_significant_bit);
+                bench_methode!($t, zero_impl);
             }
         )*
     };
 }
 
-bench!(u8, u16, u32, u64, u128);
+bench_type!(u8, u16, u32, u64, u128);
