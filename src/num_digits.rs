@@ -1,10 +1,7 @@
 extern crate itoa;
 
-pub trait NumDigits {
+pub trait Digits {
     fn log(&self) -> usize;
-    fn str_format(&self) -> usize;
-    fn str_format_stack(&self) -> usize;
-    fn str_itoa_stack(&self) -> usize;
     fn div_loop(&self) -> usize;
     fn div_unrolled(&self) -> usize;
     fn mul_loop(&self) -> usize;
@@ -14,33 +11,37 @@ pub trait NumDigits {
     fn most_significant_bit(&self) -> usize;
 }
 
-impl NumDigits for u8 {
-    #[inline]
-    fn log(&self) -> usize {
-        (*self as f32).log10() as u32 as usize + 1
-    }
-
+pub trait DidgitsFmt: ::std::fmt::Display {
     #[inline]
     fn str_format(&self) -> usize {
-        format!("{}", *self).len()
+        format!("{}", self).len()
     }
 
     #[inline]
     fn str_format_stack(&self) -> usize {
         use std::io::{Write, Cursor};
-        let mut b = [0u8; 3];
-        let mut c = Cursor::new(&mut b[..]);
-        write!(c, "{}", *self).unwrap();
+        let mut b = [0u8; 40];
+        let mut c = Cursor::new(b.as_mut());
+        write!(c, "{}", self).unwrap();
         c.position() as usize
     }
+}
 
+pub trait DidgitsItoa: itoa::Integer + Sized + Copy {
     #[inline]
     fn str_itoa_stack(&self) -> usize {
         use std::io::Cursor;
-        let mut b = [0u8; 3];
-        let mut c = Cursor::new(&mut b[..]);
+        let mut b = [0u8; 40];
+        let mut c = Cursor::new(b.as_mut());
         itoa::write(&mut c, *self).unwrap();
         c.position() as usize
+    }
+}
+
+impl Digits for u8 {
+    #[inline]
+    fn log(&self) -> usize {
+        (*self as f32).log10() as u32 as usize + 1
     }
 
     #[inline]
@@ -138,33 +139,13 @@ impl NumDigits for u8 {
     }
 }
 
-impl NumDigits for u16 {
+impl DidgitsFmt for u8 {}
+impl DidgitsItoa for u8 {}
+
+impl Digits for u16 {
     #[inline]
     fn log(&self) -> usize {
         (*self as f32).log10() as u32 as usize + 1
-    }
-
-    #[inline]
-    fn str_format(&self) -> usize {
-        format!("{}", *self).len()
-    }
-
-    #[inline]
-    fn str_format_stack(&self) -> usize {
-        use std::io::{Write, Cursor};
-        let mut b = [0u8; 5];
-        let mut c = Cursor::new(&mut b[..]);
-        write!(c, "{}", *self).unwrap();
-        c.position() as usize
-    }
-
-    #[inline]
-    fn str_itoa_stack(&self) -> usize {
-        use std::io::Cursor;
-        let mut b = [0u8; 5];
-        let mut c = Cursor::new(&mut b[..]);
-        itoa::write(&mut c, *self).unwrap();
-        c.position() as usize
     }
 
     #[inline]
@@ -282,33 +263,13 @@ impl NumDigits for u16 {
     }
 }
 
-impl NumDigits for u32 {
+impl DidgitsFmt for u16 {}
+impl DidgitsItoa for u16 {}
+
+impl Digits for u32 {
     #[inline]
     fn log(&self) -> usize {
         (*self as f64).log10() as u32 as usize + 1
-    }
-
-    #[inline]
-    fn str_format(&self) -> usize {
-        format!("{}", *self).len()
-    }
-
-    #[inline]
-    fn str_format_stack(&self) -> usize {
-        use std::io::{Write, Cursor};
-        let mut b = [0u8; 10];
-        let mut c = Cursor::new(&mut b[..]);
-        write!(c, "{}", *self).unwrap();
-        c.position() as usize
-    }
-
-    #[inline]
-    fn str_itoa_stack(&self) -> usize {
-        use std::io::Cursor;
-        let mut b = [0u8; 10];
-        let mut c = Cursor::new(&mut b[..]);
-        itoa::write(&mut c, *self).unwrap();
-        c.position() as usize
     }
 
     #[inline]
@@ -466,33 +427,13 @@ impl NumDigits for u32 {
     }
 }
 
-impl NumDigits for u64 {
+impl DidgitsFmt for u32 {}
+impl DidgitsItoa for u32 {}
+
+impl Digits for u64 {
     #[inline]
     fn log(&self) -> usize {
         (*self as f64).log10() as u32 as usize + 1
-    }
-
-    #[inline]
-    fn str_format(&self) -> usize {
-        format!("{}", *self).len()
-    }
-
-    #[inline]
-    fn str_format_stack(&self) -> usize {
-        use std::io::{Write, Cursor};
-        let mut b = [0u8; 20];
-        let mut c = Cursor::new(&mut b[..]);
-        write!(c, "{}", *self).unwrap();
-        c.position() as usize
-    }
-
-    #[inline]
-    fn str_itoa_stack(&self) -> usize {
-        use std::io::Cursor;
-        let mut b = [0u8; 20];
-        let mut c = Cursor::new(&mut b[..]);
-        itoa::write(&mut c, *self).unwrap();
-        c.position() as usize
     }
 
     #[inline]
@@ -721,29 +662,13 @@ impl NumDigits for u64 {
     }
 }
 
-impl NumDigits for u128 {
+impl DidgitsFmt for u64 {}
+impl DidgitsItoa for u64 {}
+
+impl Digits for u128 {
     #[inline]
     fn log(&self) -> usize {
         (*self as f64).log10() as u32 as usize + 1
-    }
-
-    #[inline]
-    fn str_format(&self) -> usize {
-        format!("{}", *self).len()
-    }
-
-    #[inline]
-    fn str_format_stack(&self) -> usize {
-        use std::io::{Write, Cursor};
-        let mut b = [0u8; 39];
-        let mut c = Cursor::new(&mut b[..]);
-        write!(c, "{}", *self).unwrap();
-        c.position() as usize
-    }
-
-    #[inline]
-    fn str_itoa_stack(&self) -> usize {
-        unimplemented!();
     }
 
     #[inline]
@@ -1107,3 +1032,6 @@ impl NumDigits for u128 {
         }
     }
 }
+
+impl DidgitsFmt for u128 {}
+impl DidgitsItoa for u128 {}

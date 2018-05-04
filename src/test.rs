@@ -41,13 +41,6 @@ macro_rules! test_methode {
             }
         }
     };
-    (u128, str_itoa_stack) => {
-        #[test]
-        #[should_panic]
-        fn str_itoa_stack() {
-            test_helper(|n: u128| n.str_itoa_stack());
-        }
-    };
     ($t:ident, $name:ident) => {
         #[test]
         fn $name() {
@@ -60,7 +53,7 @@ macro_rules! test_type {
     ( $( $t:ident($max:expr) ),* ) => {
         $(
             mod $t {
-                use ::num_digits::NumDigits;
+                use ::num_digits::{Digits, DidgitsFmt, DidgitsItoa};
 
                 fn test_helper<F: Fn($t) -> usize>(f: F) {
                     assert_eq!(f(0), 1);
@@ -77,10 +70,10 @@ macro_rules! test_type {
                     }
                 }
 
-                test_methode!($t, log);
                 test_methode!($t, str_format);
                 test_methode!($t, str_format_stack);
                 test_methode!($t, str_itoa_stack);
+                test_methode!($t, log);
                 test_methode!($t, div_loop);
                 test_methode!($t, div_unrolled);
                 test_methode!($t, mul_loop);
