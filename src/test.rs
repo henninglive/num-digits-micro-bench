@@ -53,7 +53,7 @@ macro_rules! test_type {
     ( $( $t:ident($max:expr) ),* ) => {
         $(
             mod $t {
-                use ::num_digits::{Digits, DidgitsFmt, DidgitsItoa};
+                use ::{Digits, DidgitsFmt, DidgitsItoa};
 
                 fn test_helper<F: Fn($t) -> usize>(f: F) {
                     assert_eq!(f(0), 1);

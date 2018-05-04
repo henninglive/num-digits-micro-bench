@@ -46,7 +46,7 @@ macro_rules! bench_type {
         $(
             mod $t {
                 use super::test::{Bencher, black_box};
-                use ::num_digits::{Digits, DidgitsFmt, DidgitsItoa};
+                use ::{Digits, DidgitsFmt, DidgitsItoa};
 
                 const BENCH_SIZE: usize = 1_000;
 
